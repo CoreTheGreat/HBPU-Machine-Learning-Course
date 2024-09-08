@@ -1,2 +1,3 @@
 .vscode
-Data/ml-latest-small.zip
+Data/
+.ipynb_checkpoints
