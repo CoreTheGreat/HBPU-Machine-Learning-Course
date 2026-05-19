@@ -18,3 +18,4 @@ outputs/
 .agent/
 data/test1_answer_api.json
 data/test1_answer_local.json
+.DS_Store
