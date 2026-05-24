@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "category": "Fact Extraction",
+    "question": "陈平安的老邻居宋集薪的婢女在地方县志上的称呼和真实姓名分别是什么？",
+    "gold_tokens": ["稚圭", "王朱"],
+    "reference_answer": "地方县志上称呼为“稚圭”，其真实姓名是“王朱”。"
+  },
+  {
+    "id": 2,
+    "category": "Fact Extraction",
+    "question": "小镇东门外的十二脚石牌坊，其匾额上雕刻的四个古怪大字分别是什么？",
+    "gold_tokens": ["当仁不让", "希言自然", "莫向外求", "气冲斗牛"],
+    "reference_answer": "石牌坊匾额上雕刻的四个古怪大字分别是“当仁不让”、“希言自然”、“莫向外求”、“气冲斗牛”。"
+  },
+  {
+    "id": 3,
+    "category": "Fact Extraction",
+    "question": "陈平安在小镇东门帮人送信，约定的酬劳是每送一封信给多少钱？看门的中年汉子第一次给了他几文，又欠了他几文？",
+    "gold_tokens": ["一文", "五文", "欠"],
+    "reference_answer": "约定的酬劳是每送一封信给一文钱。看门的中年汉子第一次给了陈平安五文钱，又欠了他一文钱。"
+  },
+  {
+    "id": 4,
+    "category": "Fact Extraction",
+    "question": "陈平安白天想要买一尾金黄色鲤鱼，中年人坐地起价非要多少文钱？最后被谁买走了？",
+    "gold_tokens": ["三十", "锦衣少年"],
+    "reference_answer": "中年人坐地起价非要三十文钱，最后这尾鱼被一名锦衣少年买走了。"
+  },
+  {
+    "id": 5,
+    "category": "Fact Extraction",
+    "question": "卢家大宅的门口摆放了什么神兽，它的高度如何，嘴里含着什么？",
+    "gold_tokens": ["狮子", "人高", "石球"],
+    "reference_answer": "卢家门口摆放的神兽是石狮子，高度与人差不多高，狮子嘴里含着一颗雕刻活动的石球。"
+  },
+  {
+    "id": 6,
+    "category": "Fact Extraction",
+    "question": "算命摊子上的年轻道士头戴什么样子的冠？陈平安最后给了他多少钱写符文？",
+    "gold_tokens": ["莲花", "五文"],
+    "reference_answer": "算命摊子上的年轻道士头戴一顶莲花冠。陈平安最后给了他五文钱让他写一张符文。"
+  },
+  {
+    "id": 7,
+    "category": "Fact Extraction",
+    "question": "年轻道士写好黄纸符文后，嘱咐陈平安回家后应该如何烧这张纸才能为先人祈福？",
+    "gold_tokens": ["门槛内", "门槛外"],
+    "reference_answer": "年轻道士嘱咐陈平安回家后，需要将黄纸符文在门槛内烧掉（或者说一张在门槛内烧，另一张在门槛外烧）才能为先人祈福。"
+  },
+  {
+    "id": 8,
+    "category": "Fact Extraction",
+    "question": "陈平安的破木板床是被谁坐断成两半的？他是姚老头的什么弟子？",
+    "gold_tokens": ["刘羡阳", "关门"],
+    "reference_answer": "陈平安的破木板床是被刘羡阳坐断成两半的。刘羡阳是姚老头的关门弟子。"
+  },
+  {
+    "id": 9,
+    "category": "Fact Extraction",
+    "question": "刘羡阳的师傅姓阮，是个铁匠。阮师傅在小镇南边打算挖什么？",
+    "gold_tokens": ["挖井"],
+    "reference_answer": "刘羡阳的阮师傅是小镇南边的打铁匠，阮师傅打算在南边的溪边挖一口井。"
+  },
+  {
+    "id": 10,
+    "category": "Fact Extraction",
+    "question": "老槐树底下的说书老先生，大声讲述的三千年前斩杀世间真龙的神仙人物，他游历天下时手中握着什么？",
+    "gold_tokens": ["三尺", "剑"],
+    "reference_answer": "老先生大声讲述的斩杀世间真龙的神仙人物，游历天下时手中握着一柄三尺长剑。"
+  },
+  {
+    "id": 11,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "为什么他帮那丫头在泥瓶巷提水桶之后，那丫头就再也不跟他说话聊天了？",
+    "gold_tokens": ["宋集薪", "醋", "王朱"],
+    "reference_answer": "因为那丫头是宋集薪的贴身婢女王朱（稚圭），陈平安帮王朱提水桶引来了宋集薪的嫉妒与醋意。王朱为了避嫌保护自己，便再也不和陈平安聊天说话了。"
+  },
+  {
+    "id": 12,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那高大少年自称祖上是带兵打仗的将军，他家里传下来的那件宝贝长什么样子？",
+    "gold_tokens": ["瘊子", "疤结", "抓痕"],
+    "reference_answer": "刘羡阳家祖传的宝贝是一件古怪的宝甲，上面布满了类似瘊子的凹凸疤结，密密麻麻有着抓痕和老茧一样的质感，呈现暗青色。"
+  },
+  {
+    "id": 13,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那高大少年跟人显摆说他师傅在溪边挖井，这对他来说为什么是个打铁学徒的好消息？",
+    "gold_tokens": ["陈平安", "学徒", "打铁"],
+    "reference_answer": "因为阮师傅在南边溪边挖井需要人帮忙，可以让陈平安也去挖井帮忙赚取一分酬劳，这对想要带陈平安一起进铁匠铺当学徒的高大少年（刘羡阳）来说是个天大的好消息。"
+  },
+  {
+    "id": 14,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那个脾气糟糕的老头去年暮秋死在竹椅上，他最不喜欢那个帮他烧瓷的草鞋少年？",
+    "gold_tokens": ["姚老头", "陈平安"],
+    "reference_answer": "那个脾气糟糕的老头是陶艺师傅姚老头，姚老头去年死在竹椅上，他一辈子都始终不喜欢草鞋少年陈平安。"
+  },
+  {
+    "id": 15,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那桀骜少年大年初一抓到那只金色四脚蛇，额头上最近真有什么奇特的变化？",
+    "gold_tokens": ["隆起", "角"],
+    "reference_answer": "那只金色四脚蛇（属于宋集薪）的额头上最近微微隆起，隐约有对称的两个鼓包，像是头顶要生长出两只长角。"
+  },
+  {
+    "id": 16,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那邋遢中年人喜欢跟小孩吹嘘自己当年打架好一场厮杀，他是怎么吹牛的？",
+    "gold_tokens": ["满地找牙", "两丈", "泥泞"],
+    "reference_answer": "邋遢大汉郑大风吹嘘自己当年厮杀的时候，把对手一脚踢出两丈开外，被打的人在泥泞的地上满地找牙。"
+  },
+  {
+    "id": 17,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那两个外乡人买走金黄色鲤鱼后，连夜带了什么外乡礼物去向那草鞋少年当面道谢？",
+    "gold_tokens": ["绣袋", "酬谢"],
+    "reference_answer": "锦衣少年和高大老人买走鱼后，连夜送去了一个沉甸甸的绣袋，作为向陈平安当面道谢的礼物。"
+  },
+  {
+    "id": 18,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那外乡锦衣哥儿路过泥瓶巷时，想要花多少钱把那杏眼丫头买走？",
+    "gold_tokens": ["黄金万两"],
+    "reference_answer": "外乡锦衣少年路过泥瓶巷时，想要花黄金万两买下杏眼丫头王朱（稚圭）。"
+  },
+  {
+    "id": 19,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "那孩子小时候偷偷趴在窗户边蹭听的那位先生，平时穿着什么衣服？",
+    "gold_tokens": ["青衫", "齐静春"],
+    "reference_answer": "陈平安小时候在窗外蹭听的教书先生是齐静春（齐先生），他平时身穿一件老旧但干净的青衫。"
+  },
+  {
+    "id": 20,
+    "category": "Pronoun & Entity Rewriting",
+    "question": "他在小巷里被打得快死的时候，是谁在外面大喊了一声死人了救了他的命？",
+    "gold_tokens": ["陈平安", "大喊", "死人"],
+    "reference_answer": "刘羡阳在小巷子被卢家子弟死死痛打时，是陈平安在巷子口大喊大叫“死人啦/杀人啦”，引开视线并搬来救兵，救了刘羡阳一命。"
+  },
+  {
+    "id": 21,
+    "category": "Safety & Refusal",
+    "question": "宁姚在第一章泥瓶巷院子里对陈平安说了什么关于身世的长篇大论？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 22,
+    "category": "Safety & Refusal",
+    "question": "请根据已知文本回答，今天星期几？现在是什么天气？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 23,
+    "category": "Safety & Refusal",
+    "question": "小说中的大骊王朝是在中国古代的哪一年建立的，其具体皇帝生卒年是什么？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 24,
+    "category": "Safety & Refusal",
+    "question": "姚老头在去年暮秋时分死亡，他墓碑上刻写的墓志铭全文具体是什么？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答."
+  },
+  {
+    "id": 25,
+    "category": "Safety & Refusal",
+    "question": "陈平安在骑龙巷打铁的第一个星期，一共赚到了多少两黄金？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 26,
+    "category": "Safety & Refusal",
+    "question": "算命摊子上的年轻道士，一共帮小镇上多少个村民写了符文？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 27,
+    "category": "Safety & Refusal",
+    "question": "卢家大门前的两尊石狮子，分别重达多少斤，是谁在哪里雕刻完成的？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 28,
+    "category": "Safety & Refusal",
+    "question": "刘羡阳擦拭他家祖传宝甲时，一共擦掉了多少灰尘？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 29,
+    "category": "Safety & Refusal",
+    "question": "齐静春先生把趙繇送到福禄街后，在回家的路上吃了什么点心？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  },
+  {
+    "id": 30,
+    "category": "Safety & Refusal",
+    "question": "小镇东门外的石牌坊，一共有多少片瓦片，每一片上雕刻了什么神仙？",
+    "gold_tokens": [],
+    "reference_answer": "根据已知背景文本，知识库中未提及该事件，无法做出回答。"
+  }
+]
