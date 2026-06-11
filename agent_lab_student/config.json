@@ -1,0 +1,15 @@
+{
+  "active_provider": "agnes",
+  "providers": {
+    "agnes": {
+      "api_key": "sk-k16sSo1U4BnWoNj4KAMyVqPEeIKe9Kqq9pm7Aqu98f21GuPh",
+      "base_url": "https://apihub.agnes-ai.com/v1",
+      "model_name": "agnes-2.0-flash"
+    },
+    "siliconflow": {
+      "api_key": "你的SILICONFLOW_API_KEY",
+      "base_url": "https://api.siliconflow.cn/v1",
+      "model_name": "deepseek-ai/DeepSeek-V3"
+    }
+  }
+}
