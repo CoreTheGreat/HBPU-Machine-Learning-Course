@@ -1,0 +1,229 @@
+# ==============================================================================
+# HBPU-AI 网页小游戏开发知识库与数值平衡指南
+# ==============================================================================
+
+# SECTION 1: 基础 HTML 与 CSS 网格/画布布局规范
+【说明】用于智能体规划网页游戏布局时的标准骨架，内置暗色调、霓虹及赛博朋克等高级视觉配色。
+
+【极简 Canvas 容器布局 HTML 模板】
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Arcade Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #1a1525 0%, #0c0813 100%);
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+            background: rgba(15, 10, 25, 0.85);
+            border: 4px solid #00f0ff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #00f0ff, inset 0 0 10px rgba(0, 240, 255, 0.3);
+            padding: 20px;
+            text-align: center;
+        }
+        canvas {
+            background-color: #05020a;
+            border: 2px solid #ff007f;
+            display: block;
+            margin: 10px auto;
+            box-shadow: 0 0 10px #ff007f;
+        }
+        .hud-panel {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #39ff14;
+            text-shadow: 0 0 5px #39ff14;
+            font-weight: bold;
+        }
+        .btn-arcade {
+            background: linear-gradient(135deg, #ff007f 0%, #7b00ff 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-family: inherit;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 0 8px #ff007f;
+            transition: transform 0.1s, box-shadow 0.2s;
+        }
+        .btn-arcade:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff007f, 0 0 25px #7b00ff;
+        }
+        .btn-arcade:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div class="hud-panel">
+            <div>得分: <span id="score-val">0</span></div>
+            <div>关卡: <span id="level-val">1</span></div>
+        </div>
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div style="margin-top: 15px;">
+            <button class="btn-arcade" id="startBtn">开始游戏</button>
+        </div>
+    </div>
+</body>
+</html>
+
+---
+
+# SECTION 2: 经典 2D 游戏主循环 (Game Loop) 框架
+【说明】提供带有高精度时间补偿及平滑动画的游戏循环机制，避免直接使用 setInterval/setTimeout 导致的帧率卡顿。
+
+【标准 JS 游戏主循环模板】
+```javascript
+let canvas = document.getElementById("gameCanvas");
+let ctx = canvas.getContext("2d");
+
+let lastTime = 0;
+let score = 0;
+let level = 1;
+let gameOver = false;
+
+// 游戏主逻辑更新 (dt 为自上一帧以来的时间差，单位为毫秒)
+def update(dt) {
+    // 例如：物体移动、物理碰撞检测
+}
+
+// 画面绘制
+def draw() {
+    // 1. 清空画布
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // 2. 绘制网格背景或游戏元素
+    ctx.fillStyle = "#ff007f";
+    ctx.fillRect(50, 50, 30, 30); // 示例绘图
+    
+    // 3. 绘制游戏结束文案
+    if (gameOver) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.75)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#ff00ff";
+        ctx.font = "30px 'Courier New'";
+        ctx.textAlign = "center";
+        ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+    }
+}
+
+// 引擎帧率驱动循环
+def loop(timestamp) {
+    if (!lastTime) lastTime = timestamp;
+    let dt = timestamp - lastTime;
+    lastTime = timestamp;
+
+    if (!gameOver) {
+        update(dt);
+    }
+    draw();
+    
+    requestAnimationFrame(loop);
+}
+
+// 开启循环
+requestAnimationFrame(loop);
+```
+
+---
+
+# SECTION 3: 贪吃蛇 (Snake) 游戏核心算法逻辑
+【说明】贪吃蛇的关键算法实现规则。
+
+1. **蛇身与移动数据结构**：
+   - 蛇身以包含坐标 `{x, y}` 的数组表示，例如 `snake = [{x: 10, y: 10}, {x: 10, y: 11}]`。
+   - 蛇头为数组首位元素 `snake[0]`。
+   - 移动方向表示为增量 `{dx, dy}`，例如向右为 `{dx: 1, dy: 0}`，向上为 `{dx: 0, dy: -1}`。
+2. **移动更新逻辑 (Tick)**：
+   - 新蛇头位置：`let head = {x: snake[0].x + dx, y: snake[0].y + dy}`；
+   - 将新蛇头插入数组头部：`snake.unshift(head)`；
+   - 判断蛇头是否与食物坐标重合。如果重合，则不移除蛇尾，重新生成食物；如果不重合，则弹出最后一节蛇尾：`snake.pop()`。
+3. **碰撞检测**：
+   - **墙壁碰撞**：若 `head.x < 0` 或 `head.x >= gridCount` 或 `head.y < 0` 或 `head.y >= gridCount`，则触发游戏结束。
+   - **自身碰撞**：遍历蛇身（从索引 1 开始），若有某节 `snake[i].x === head.x && snake[i].y === head.y`，则触发游戏结束。
+4. **键盘监听防逆向控制**：
+   - 避免贪吃蛇向当前行进方向的反方向掉头。
+   ```javascript
+   document.addEventListener("keydown", event => {
+       switch(event.key) {
+           case "ArrowLeft":  if (dx === 0) { dx = -1; dy = 0; } break;
+           case "ArrowRight": if (dx === 0) { dx = 1; dy = 0; } break;
+           case "ArrowUp":    if (dy === 0) { dx = 0; dy = -1; } break;
+           case "ArrowDown":  if (dy === 0) { dx = 0; dy = 1; } break;
+       }
+   });
+   ```
+
+---
+
+# SECTION 4: 2048 游戏矩阵滑动与合并核心逻辑
+【说明】2048 的矩阵计算以及空位随机生成算法。
+
+1. **数据结构**：
+   - 4x4 的二维数字矩阵 `board = [[0,2,0,0], [4,0,2,2], [0,0,0,0], [0,0,0,0]]`，其中 0 代表空闲位置。
+2. **矩阵滑动方向函数 (向左滑动示例)**：
+   ```javascript
+   function slideLeft() {
+       let changed = false;
+       for (let r = 0; r < 4; r++) {
+           // 1. 过滤所有非0元素
+           let row = board[r].filter(val => val !== 0);
+           // 2. 合并相邻且相等的数字
+           for (let i = 0; i < row.length - 1; i++) {
+               if (row[i] === row[i+1]) {
+                   row[i] *= 2;
+                   score += row[i];
+                   row.splice(i+1, 1);
+                   changed = true;
+               }
+           }
+           // 3. 补0以重新填充至4个元素
+           while (row.length < 4) {
+               row.push(0);
+           }
+           // 4. 判断棋盘状态是否发生改变
+           if (JSON.stringify(board[r]) !== JSON.stringify(row)) {
+               changed = true;
+           }
+           board[r] = row;
+       }
+       return changed;
+   }
+   ```
+3. **滑向其他方向的转换技巧**：
+   - 向右滑动：每行先反转（`reverse()`），调用 `slideLeft()`，再次反转即可；
+   - 向上/向下滑动：将矩阵进行转置（Transpose），调用 `slideLeft()`（或配合反转），最后再转置回来。
+4. **生成新数字**：
+   - 遍历棋盘寻找所有为 0 的坐标，随机抽取一个，并在该处填入 2 (90% 概率) 或 4 (10% 概率)。
+
+---
+
+# SECTION 5: 网页小游戏数值平衡设计规范
+【说明】用于编写游戏逻辑时设置参数，让游戏玩起来更具挑战和乐趣。
+
+1. **动作类游戏速度衰减与难度公式**：
+   - 设初始游戏主循环 Tick 速度为 `interval = 150ms`。
+   - 每次得分，新速度更新为：`new_interval = Math.max(50, 150 - Math.floor(score / 5) * 10)`（每得5分，游戏变快10ms，直到极速50ms）。
+2. **分值累加机制**：
+   - 随着难度级别（Level）的提升，提供得分乘数加权：
+     `score_gain = base_points * level`

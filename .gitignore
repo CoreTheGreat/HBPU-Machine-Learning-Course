@@ -22,3 +22,5 @@ data/test1_answer_local.json
 
 data/fc_test
 agent_lab_full
+agent.log
+workspace/
