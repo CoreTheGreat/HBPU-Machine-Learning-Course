@@ -2,7 +2,7 @@
   "active_provider": "agnes",
   "providers": {
     "agnes": {
-      "api_key": "sk-k16sSo1U4BnWoNj4KAMyVqPEeIKe9Kqq9pm7Aqu98f21GuPh",
+      "api_key": "",
       "base_url": "https://apihub.agnes-ai.com/v1",
       "model_name": "agnes-2.0-flash"
     },
